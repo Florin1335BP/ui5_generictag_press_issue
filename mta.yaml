@@ -1,0 +1,18 @@
+_schema-version: "3.2"
+ID: dummy.dummy
+version: 0.0.1
+
+build-parameters:
+  before-all:
+    - builder: custom
+      commands:
+        - npm install
+        - npm run build:workspaces
+
+modules:
+  - name: dummy.dummy
+    type: staticfile
+    path: dist
+    parameters:
+      disk-quota: 256M
+      memory: 256M

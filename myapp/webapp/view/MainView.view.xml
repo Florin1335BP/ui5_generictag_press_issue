@@ -1,0 +1,28 @@
+<mvc:View
+    controllerName="myapp.controller.MainView"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+>
+    <Page
+        id="page"
+        title="{i18n>title}"
+    >
+        <Table>
+            <columns>
+                <Column>
+                    <Label text="Column 1" />
+                </Column>
+                <Column>
+                    <Label text="Column 2" />
+                </Column>
+            </columns>
+            <ColumnListItem
+                type="Navigation"
+                press=".onColumnListItemPress"
+            >
+                <Button text="Button" />
+                <GenericTag text="GenericTag" />
+            </ColumnListItem>
+        </Table>
+    </Page>
+</mvc:View>

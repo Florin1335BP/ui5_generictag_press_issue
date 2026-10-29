@@ -1,0 +1,47 @@
+specVersion: "4.0"
+metadata:
+  name: myapp
+type: application
+server:
+  customMiddleware:
+    - name: fiori-tools-proxy
+      afterMiddleware: compression
+      configuration:
+        ignoreCertErrors: false
+        ui5:
+          path:
+            - /resources
+            - /test-resources
+          url: https://ui5.sap.com
+          version: 1.148.13
+    - name: fiori-tools-appreload
+      afterMiddleware: compression
+      configuration:
+        port: 35729
+        path: webapp
+        delay: 300
+    - name: fiori-tools-preview
+      afterMiddleware: fiori-tools-appreload
+      configuration:
+        flp:
+          theme: sap_horizon
+          path: test/flpSandbox.html
+          intent:
+            object: myapp
+            action: display
+    - name: sap-fe-mockserver
+      mountPath: /odata
+      afterMiddleware: compression
+      configuration:
+        annotations:
+          - localPath: './webapp/localService/metadata.xml'
+            urlPath: '/'
+        services:
+          - urlPath: '/'
+            metadataPath: './webapp/localService/metadata.xml'
+            mockdataPath: './webapp/localService/data'
+builder:
+  resources:
+    excludes:
+      - /test/**
+      - /localService/**

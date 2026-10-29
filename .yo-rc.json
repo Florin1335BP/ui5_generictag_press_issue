@@ -1,0 +1,16 @@
+{
+  "generator-ui5-project": {
+    "namespaceUI5": "dummy",
+    "projectName": "dummy",
+    "uimoduleName": "myapp",
+    "enableFPM": false,
+    "platform": "Static webserver",
+    "ui5Libs": "Content delivery network (SAPUI5)",
+    "newDir": false,
+    "initRepo": true,
+    "projectId": "dummy.dummy",
+    "uimodules": [
+      "myapp"
+    ]
+  }
+}
